@@ -1,6 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Encrypt File";
+    ViewData["Title1"] = "Encrypt File";
+    ViewData["Title2"] = "Decrypt File";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title1"]</h1>
 
-<p>Encrypt File.</p>
+@using (Html.BeginForm("Encrypt", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <ol>
+         <li class="lifile">
+            <input type="file" id="fileToUpload" name="file" />
+            <span class="field-validation-error" id="spanfile"></span>
+        </li>
+    </ol>
+    <input type="submit" id="btnSubmit" value="Encrypt" />
+}
+
+<hr />
+
+<h1>@ViewData["Title2"]</h1>
+@using (Html.BeginForm("Decrypt", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary();
+    <ol>
+        <li class="lifile">
+            <input type="file" id="fileToUpload" name="file" />
+            <span class="field-validation-error" id="spanfile"></span>
+        </li>
+    </ol>
+    <input type="submit" id="btnSubmit2" value="Decrypt" />
+}
